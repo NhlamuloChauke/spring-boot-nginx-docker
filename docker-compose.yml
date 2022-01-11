@@ -1,8 +1,20 @@
 version: '2.2'
 services: 
-   docker-spring-boot-nginx:
-    image: docker-spring-boot-nginx
-    container_name: docker-spring-boot-nginx
+  nginx:
+   container_name: some-nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+   - 80:80
+   - 443:443
+   volumes:
+   - ./nginx/conf.d:/etc/nginx/conf.d
+   depends_on:
+   - service1
+
+  service1:
+    image: service1
+    container_name: service1
     build:
       context: ./spring-boot-docker-nginx
     ports:
