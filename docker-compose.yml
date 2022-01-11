@@ -1,0 +1,9 @@
+version: '2.2'
+services: 
+   docker-spring-boot-nginx:
+    image: docker-spring-boot-nginx
+    container_name: docker-spring-boot-nginx
+    build:
+      context: ./spring-boot-docker-nginx
+    ports:
+     - 8084:8084
